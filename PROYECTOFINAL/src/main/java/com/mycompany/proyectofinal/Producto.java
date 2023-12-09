@@ -28,11 +28,6 @@ public abstract class Producto {
         this.stock=stock;
         this.pedidos = new ArrayList<>();
     }
-
-    
-    public void actualizarStock(){
-        
-    }
     
     public void ajustarPrecio(){
         
@@ -41,11 +36,10 @@ public abstract class Producto {
     public void agregarnuevopedido(Pedido pedido){
         pedidos.add(pedido);
     }
-
+    
     public List<Pedido> getPedidos() {
         return pedidos;
     }
-    
     
     public int getIdproducto() {
         return idproducto;

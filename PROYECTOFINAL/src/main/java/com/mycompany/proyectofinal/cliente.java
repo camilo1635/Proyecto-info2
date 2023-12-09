@@ -6,24 +6,25 @@ package com.mycompany.proyectofinal;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  *
  * @author jc777
  */
 public class cliente {
+
     private int idcliente;
     private String nombre;
     private String direccion;
-    private List<Pedido> pedidos;
-    //private List<ClienteReferido> referidos;
+    private List<cliente> clientesreferidos;
     private cliente ClienteReferido;
-    
-    public cliente(int idcliente, String nombre, String direccion){
-        this.idcliente=idcliente;
-        this.nombre=nombre;
-        this.direccion=direccion;
-        this.pedidos=new ArrayList<>();
-        //this.referidos= new ArrayList<>();
+    private Pedido pedido;
+
+    public cliente() {
+        this.idcliente = 1;
+        this.nombre = "";
+        this.direccion = "";
+        this.clientesreferidos = new ArrayList<>();
         this.ClienteReferido = null;
     }
 
@@ -34,22 +35,22 @@ public class cliente {
     public cliente getClienteReferido() {
         return ClienteReferido;
     }
-    
 
-    public void actualizarInformacionPersonal(String nombre, String direccion){
-        
+    public void agregarnuevopedido(Pedido pedido) {
+        this.pedido = pedido;
     }
-    
-  
-    public void verificarHistorialPagos(){
-        
+
+    public void actualizarInformacionPersonal(String nombre, String direccion) {
+
     }
-    
-    public void manejarPreferencias(){
-        
+
+    public void verificarHistorialPagos() {
+
     }
-    
-   
+
+    public void manejarPreferencias() {
+
+    }
 
     public int getIdcliente() {
         return idcliente;
@@ -74,6 +75,11 @@ public class cliente {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "cliente{" + "idcliente=" + idcliente + ", nombre=" + nombre + ", direccion=" + direccion + ", pedido=" + pedido + '}';
+    }
+
+   
 }

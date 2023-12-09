@@ -30,6 +30,21 @@ public class Pedido {
         productos.add(producto);
         producto.agregarnuevopedido(this);//linea de asociacion
     }
+    
+    public void asignarCliente(cliente cliente){
+        this.cliente=cliente;
+    }
+    
+    public double calcularPromedioProductos(){
+        double suma=0;
+        
+        for(Producto producto: productos){
+            suma += producto.getPrecio();
+        }
+        double promedio = suma/productos.size();
+        return promedio;
+        
+    }
 
     public int getIdPedido() {
         return idPedido;
@@ -69,7 +84,7 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Pedido{" + "idPedido=" + idPedido + ", fechaCompra=" + fechaCompra + ", estado=" + estado + ", productos=" + productos + ", cliente=" + cliente + '}';
+        return "Pedido{" + "idPedido=" + idPedido + ", fechaCompra=" + fechaCompra + ", estado=" + estado + ", productos=" + productos + '}';
     }
     
     
