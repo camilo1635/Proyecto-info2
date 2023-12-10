@@ -1,4 +1,3 @@
-
 package com.mycompany.proyectofinal;
 
 /**
@@ -6,6 +5,7 @@ package com.mycompany.proyectofinal;
  * @author usuario
  */
 public interface Calculo {
-    
+
     public void calcularProductos();
+
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.proyectofinal;
 
 import java.util.ArrayList;
@@ -16,7 +12,6 @@ public class cliente {
     private int idcliente;
     private String nombre;
     private String direccion;
-    private List<cliente> clientesreferidos;
     private cliente ClienteReferido;
     private Pedido pedido;
 
@@ -24,7 +19,13 @@ public class cliente {
         this.idcliente = 1;
         this.nombre = "";
         this.direccion = "";
-        this.clientesreferidos = new ArrayList<>();
+        this.ClienteReferido = null;
+    }
+
+    public cliente(String nombre, String direccion) {
+        this.idcliente = 2;
+        this.nombre = nombre;
+        this.direccion = direccion;
         this.ClienteReferido = null;
     }
 
@@ -38,18 +39,6 @@ public class cliente {
 
     public void agregarnuevopedido(Pedido pedido) {
         this.pedido = pedido;
-    }
-
-    public void actualizarInformacionPersonal(String nombre, String direccion) {
-
-    }
-
-    public void verificarHistorialPagos() {
-
-    }
-
-    public void manejarPreferencias() {
-
     }
 
     public int getIdcliente() {
@@ -81,5 +70,4 @@ public class cliente {
         return "cliente{" + "idcliente=" + idcliente + ", nombre=" + nombre + ", direccion=" + direccion + '}';
     }
 
-   
 }

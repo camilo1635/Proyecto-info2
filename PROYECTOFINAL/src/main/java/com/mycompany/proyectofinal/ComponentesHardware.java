@@ -8,35 +8,36 @@ package com.mycompany.proyectofinal;
  *
  * @author jc777
  */
-public class ComponentesHardware extends Producto{
+public class ComponentesHardware extends Producto {
+
     private String capacidad;
     private String velocidad_reloj;
     private String interfaz;
     private String modelo;
-    
-    public ComponentesHardware(){//constructor por defecto
-        super(1,"Procesador","i5-12000 ",20,5);
-        this.velocidad_reloj= "3.30 GHz";
-        this.interfaz="LGA";
-        this.modelo="Intel core";
-        this.capacidad=null;
-    }
-    
-    public ComponentesHardware(ComponentesHardware segundo){//constructor por copia 
-        super(2,"Memoria RAM ","DDR4",40,2);
-        this.capacidad="4G";
-        this.velocidad_reloj="1.5 ns";
-        this.interfaz="pequeña";
-        this.modelo="kingston";
+
+    public ComponentesHardware() {//constructor por defecto
+        super(1, "Procesador", "i5-12000 ", 20, 5);
+        this.velocidad_reloj = "3.30 GHz";
+        this.interfaz = "LGA";
+        this.modelo = "Intel core";
+        this.capacidad = null;
     }
 
-    public ComponentesHardware(String capacidad, String interfaz, String modelo){//constructor parametrizadoo
-        super(3,"Disco duro","...",20,5);
-        this.capacidad=capacidad;
-        this.interfaz=interfaz;
-        this.modelo=modelo;
+    public ComponentesHardware(ComponentesHardware segundo) {//constructor por copia 
+        super(2, "Memoria RAM ", "DDR4", 40, 2);
+        this.capacidad = "4G";
+        this.velocidad_reloj = "1.5 ns";
+        this.interfaz = "pequeña";
+        this.modelo = "kingston";
     }
-    
+
+    public ComponentesHardware(String capacidad, String interfaz, String modelo) {//constructor parametrizadoo
+        super(3, "Disco duro", "...", 20, 5);
+        this.capacidad = capacidad;
+        this.interfaz = interfaz;
+        this.modelo = modelo;
+    }
+
     public String getCapacidad() {
         return capacidad;
     }
@@ -74,6 +75,4 @@ public class ComponentesHardware extends Producto{
         return "ComponentesHardware{" + "idproducto=" + idproducto + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio + ", stock=" + stock + ", capacidad=" + capacidad + ", velocidad_reloj=" + velocidad_reloj + ", interfaz=" + interfaz + ", modelo=" + modelo + '}';
     }
 
-    
-    
 }

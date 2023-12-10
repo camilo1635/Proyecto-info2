@@ -20,7 +20,6 @@ public class Pedido implements Calculo {
         this.fechaCompra = fechaCompra;
         this.estado = estado;
         this.productos = new ArrayList<>();
-        
     }
 
     public void agregarnuevoproducto(Producto producto) {
@@ -46,7 +45,6 @@ public class Pedido implements Calculo {
 
         for (Producto producto : productos) {
             sumaPrecios += producto.getPrecio();
-            producto.calcularProductos();
         }
 
         if (!productos.isEmpty()) {
@@ -55,13 +53,31 @@ public class Pedido implements Calculo {
             System.out.println("No hay productos para calcular la suma de precios.");
         }
     }
-    
-    public void calcularPromedio(){//llamar a la funcion de la clase Producto
+
+    public void descuento() {
+        double descuento;
+        double sumaPrecios = 0;
+        int cantidadTotalProductos = 0;
+
+        for (Producto producto : productos) {
+            sumaPrecios += producto.getPrecio();
+            cantidadTotalProductos++;
+        }
+
+        if (cantidadTotalProductos > 2) {
+            descuento = sumaPrecios * 0.3;
+            System.out.println("Su descuento fue de: " + descuento);
+        } else {
+            System.out.println("No aplica descuento");
+        }
+    }
+
+    public void calcularPromedio() {//llamar a la funcion de la clase Producto
         for (Producto producto : productos) {
             producto.calcularProductos();
         }
     }
-    
+
     public int getIdPedido() {
         return idPedido;
     }

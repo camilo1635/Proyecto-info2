@@ -1,37 +1,34 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.proyectofinal;
 
 /**
  *
  * @author jc777
  */
-public class SoftwareAplicaciones extends Producto{
+public class SoftwareAplicaciones extends Producto {
+
     private String desarrollador;
     private String sistema_operativo;
     private double version;
     private String licencia;
-    
-    public SoftwareAplicaciones(){
-        super(6,"Facebook","red social",0,50);
-        this.desarrollador="Bill Gates";
-        this.sistema_operativo="Android & ISO";
-        this.version=10.1;
-        this.licencia="gratuita";
+
+    public SoftwareAplicaciones() {
+        super(6, "Facebook", "red social", 0, 50);
+        this.desarrollador = "Bill Gates";
+        this.sistema_operativo = "Android & ISO";
+        this.version = 10.1;
+        this.licencia = "gratuita";
     }
 
-    public SoftwareAplicaciones(SoftwareAplicaciones segundo){
-        super(7,"Minecraft","VideoJuego",12000,100);
-        this.desarrollador="Elon Musk";
-        this.sistema_operativo="Android, ISO, Windons, Linux";
-        this.version=7.2;
-        this.licencia="Edition Premiun";
+    public SoftwareAplicaciones(SoftwareAplicaciones segundo) {
+        super(7, "Minecraft", "VideoJuego", 12000, 100);
+        this.desarrollador = "Elon Musk";
+        this.sistema_operativo = "Android, ISO, Windons, Linux";
+        this.version = 7.2;
+        this.licencia = "Edition Premiun";
     }
 
     public SoftwareAplicaciones(String desarrollador, String sistema_operativo, double version, String licencia) {
-        super(8,"Youtube","Plataforma de videos",0,100);
+        super(8, "Youtube", "Plataforma de videos", 0, 100);
         this.desarrollador = desarrollador;
         this.sistema_operativo = sistema_operativo;
         this.version = version;
@@ -74,6 +71,5 @@ public class SoftwareAplicaciones extends Producto{
     public String toString() {
         return "SoftwareAplicaciones{" + "idproducto=" + idproducto + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio + ", stock=" + stock + ", desarrollador=" + desarrollador + ", sistema_operativo=" + sistema_operativo + ", version=" + version + ", licencia=" + licencia + '}';
     }
-    
-    
+
 }

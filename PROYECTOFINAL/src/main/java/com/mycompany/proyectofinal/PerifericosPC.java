@@ -1,36 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.proyectofinal;
 
 /**
  *
  * @author jc777
  */
-public class PerifericosPC extends Producto{
+public class PerifericosPC extends Producto {
+
     private String tipo_conexion;
     private String fabricante;
     private int numero_de_puertos;
     private String color;
     private Garantia garantia;//composicion
-    
-    public PerifericosPC(){
-        super(4,"Teclado","Mecanico",50000,10);
-        this.tipo_conexion="USB";
-        this.fabricante="Razer";
-        this.numero_de_puertos=1;
-        this.color="negro";
-        this.garantia= new Garantia("2 Años");//composicion
+
+    public PerifericosPC() {
+        super(4, "Teclado", "Mecanico", 50000, 10);
+        this.tipo_conexion = "USB";
+        this.fabricante = "Razer";
+        this.numero_de_puertos = 1;
+        this.color = "negro";
+        this.garantia = new Garantia("2 Años");//composicion
     }
 
-    public PerifericosPC(PerifericosPC segundo){
-        super(5,"Mouse","Inalambrico",30000,30);
-        this.tipo_conexion="USB";
-        this.fabricante="Logitech";
-        this.numero_de_puertos=2;
-        this.color="blanco";
-        this.garantia=new Garantia("3 meses");//composicion
+    public PerifericosPC(PerifericosPC segundo) {
+        super(5, "Mouse", "Inalambrico", 30000, 30);
+        this.tipo_conexion = "USB";
+        this.fabricante = "Logitech";
+        this.numero_de_puertos = 2;
+        this.color = "blanco";
+        this.garantia = new Garantia("3 meses");//composicion
     }
 
     public Garantia getGarantia() {
@@ -40,7 +37,7 @@ public class PerifericosPC extends Producto{
     public void setGarantia(Garantia garantia) {
         this.garantia = garantia;
     }
-    
+
     public String getTipo_conexion() {
         return tipo_conexion;
     }
@@ -77,7 +74,5 @@ public class PerifericosPC extends Producto{
     public String toString() {
         return "PerifericosPC{" + "idproducto=" + idproducto + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio + ", stock=" + stock + ", tipo_conexion=" + tipo_conexion + ", fabricante=" + fabricante + ", numero_de_puertos=" + numero_de_puertos + ", color=" + color + '}';
     }
-    
-    
-    
+
 }

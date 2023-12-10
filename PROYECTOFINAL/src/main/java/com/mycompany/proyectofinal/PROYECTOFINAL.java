@@ -1,6 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
 package com.mycompany.proyectofinal;
 
 import java.util.Scanner;
@@ -14,8 +11,8 @@ public class PROYECTOFINAL {
     public static void main(String[] args) {
 
         Scanner entrada = new Scanner(System.in);
-        int opcion;
-        boolean menu=false;
+        int opcion, num = 0, num1;
+        boolean menu = false;
         String nombre, direccion;
 
         //CREAMOS LOS OBJETOS DE LA TIENDA PARA VENDER//
@@ -30,8 +27,10 @@ public class PROYECTOFINAL {
         SoftwareAplicaciones aplicacion2 = new SoftwareAplicaciones(aplicacion1);
         SoftwareAplicaciones aplicacion3 = new SoftwareAplicaciones("Pastor Lopez", "Multiplataforma", 12.2, "gratis");
 
-        //CREAMOS EL CLIENTE//
+        //CREAMOS LOS CLIENTE//
         cliente cliente1 = new cliente();
+        cliente cliente2 = new cliente("Juan", "Centro");
+        cliente cliente3 = new cliente("Santiago", "La Esmeralda");
 
         //CREAMOS EL MENU PRINCIPAL//
         System.out.println("--------BIENVENIDO A EAZY SHOP----------");
@@ -42,11 +41,15 @@ public class PROYECTOFINAL {
         direccion = entrada.next();
         cliente1.setDireccion(direccion);
         System.out.println("\nSus datos son: " + cliente1.toString());
+        
 
         //CREAMOS EL PEDIDO//
-        
         Pedido pedido3 = new Pedido(30, "30/5/2005", "Disponible");
-
+        
+        //CREAMOS LA FACTURA//
+        Factura factura1 = new Factura("Electronica","Efectivo",pedido3);
+        
+        
         while (!menu) {
             System.out.println("\nQue productos desea comprar?: ");
             System.out.println("1. " + periferico1.toString() + " Garantia: " + periferico1.getGarantia().getTiempo());
@@ -61,9 +64,7 @@ public class PROYECTOFINAL {
             System.out.println("10. Calcular Precio total");
             System.out.println("11. Salir");
             opcion = entrada.nextInt();
-
             
-
             switch (opcion) {
                 case 1:
                     pedido3.asignarCliente(cliente1);
@@ -109,26 +110,50 @@ public class PROYECTOFINAL {
                     pedido3.calcularPromedio();
                     break;
                 case 10:
-                    pedido3.calcularProductos();  
+                    pedido3.calcularProductos();
                     break;
                 case 11:
                     menu = true;
                     break;
             }
             
+            try {
+                if (opcion >= 12) {
+                    throw new IllegalArgumentException("La opción digitada es incorrecta, vuelva a digitar: ");
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println("Se produjo una excepción: " + e.getMessage());
+            }
+
         }
-        
-        System.out.println("Sus productos comprados fueron: "+pedido3.mostrarProductos());
 
-        //cliente1.setClienteReferido(cliente2);//autorelacion
-        //cliente2.setClienteReferido(cliente1);
+        System.out.println("Sus productos comprados fueron: " + pedido3.mostrarProductos());
+        pedido3.descuento();
+        System.out.println("\nDesea recomenda EAZY SHOP a otro cliente? ");
+        System.out.println("1. Si");
+        System.out.println("2. No");
+        num1 = entrada.nextInt();
+        if (num1 == 1) {
+            System.out.println("Clientes: "
+                    + "\n1. " + cliente2.getNombre() + "\n2. " + cliente3.getNombre());
+            num = entrada.nextInt();
+            switch (num) {
+                case 1:
+                    cliente1.setClienteReferido(cliente2);//autorelacion
+                    System.out.println("\nEl cliente recomedado fue: " + cliente1.getClienteReferido().getNombre());
+                    break;
+                case 2:
+                    cliente1.setClienteReferido(cliente3);
+                    System.out.println("\nEl cliente recomedado fue: " + cliente1.getClienteReferido().getNombre());
+                    break;
+            }
+            System.out.println("Su factura es la siguiente: "+factura1.toString()+"\nDatos de la compra: "+factura1.getPedido().toString());
+            System.out.println("\n-------Gracias por comprar en EAZY SHOP!!---------");
 
-        //System.out.println("\nEl cliente recomedado es: " + cliente1.getClienteReferido().getNombre());
-
-        //cliente1.agregarnuevopedido(pedido1);
-        //pedido2.asignarCliente(cliente2);
-
-        //System.out.println("\nEl cliente compro: " + pedido3.toString());
+        } else {
+            System.out.println("Su factura es la siguiente: "+factura1.toString()+"\nDatos de la compra: "+factura1.getPedido().toString());
+            System.out.println("\n-------Gracias por comprar en EAZY SHOP!!---------");
+        }
 
     }
 }
