@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.proyectofinal;
 
 import java.util.ArrayList;
@@ -11,7 +8,7 @@ import java.util.List;
  *
  * @author jc777
  */
-public class Pedido {
+public class Pedido implements Calculo{
     private int idPedido;
     private String fechaCompra;
     private String estado;
@@ -35,17 +32,19 @@ public class Pedido {
         this.cliente=cliente;
     }
     
-    public double calcularPromedioProductos(){
-        double suma=0;
+
+    @Override
+    public void calcularProductos() {//calcular total
+            double total=0;
         
-        for(Producto producto: productos){
-            suma += producto.getPrecio();
-        }
-        double promedio = suma/productos.size();
-        return promedio;
-        
+            for(Producto producto: productos){
+                total += producto.getPrecio();
+            }
+            System.out.println("El total de los precios es: "+total);
     }
 
+    
+    
     public int getIdPedido() {
         return idPedido;
     }

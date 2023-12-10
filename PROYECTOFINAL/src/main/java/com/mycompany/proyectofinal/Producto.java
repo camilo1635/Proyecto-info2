@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.proyectofinal;
 
 import java.util.ArrayList;
@@ -11,36 +7,65 @@ import java.util.List;
  *
  * @author jc777
  */
-public abstract class Producto {
+public abstract class Producto implements Calculo {
+
     protected int idproducto;
     protected String nombre;
     protected String descripcion;
     protected double precio;
     protected int stock;
     protected List<Pedido> pedidos;
-    
-    
-    public Producto(int idproducto, String nombre, String descripcion, double precio, int stock){
+    private List<Producto> productos;
+
+    public Producto(int idproducto, String nombre, String descripcion, double precio, int stock) {
         this.idproducto = idproducto;
-        this.nombre=nombre;
-        this.descripcion=descripcion;
-        this.precio=precio;
-        this.stock=stock;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.stock = stock;
         this.pedidos = new ArrayList<>();
     }
-    
-    public void ajustarPrecio(){
-        
+
+    public void ajustarPrecio() {
+
     }
-    
-    public void agregarnuevopedido(Pedido pedido){
+
+    public void agregarnuevopedido(Pedido pedido) {
         pedidos.add(pedido);
+    }
+
+    
+    @Override
+    public void calcularProductos() {//calcular promedio
+        double sumaPrecios = 0;
+        int cantidadTotalProductos = 0;
+
+        for (Pedido pedido : pedidos) {
+            for (Producto producto : pedido.getProductos()) {
+                sumaPrecios += producto.getPrecio();
+                cantidadTotalProductos++;
+            }
+        }
+        if (cantidadTotalProductos > 0) {
+            double promedio = sumaPrecios / cantidadTotalProductos;
+            System.out.println("El promedio de precios de los productos es: " + promedio);
+        } else {
+            System.out.println("No hay productos para calcular el promedio.");
+        }
+    }
+
+    private int getTotalProductos() {
+        int totalProductos = 0;
+        for (Pedido pedido : pedidos) {
+            totalProductos += pedido.getProductos().size();
+        }
+        return totalProductos;
     }
     
     public List<Pedido> getPedidos() {
         return pedidos;
     }
-    
+
     public int getIdproducto() {
         return idproducto;
     }
@@ -86,6 +111,4 @@ public abstract class Producto {
         return "Producto{" + "idproducto=" + idproducto + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio + ", stock=" + stock + ", pedidos=" + pedidos + '}';
     }
 
-    
-    
 }

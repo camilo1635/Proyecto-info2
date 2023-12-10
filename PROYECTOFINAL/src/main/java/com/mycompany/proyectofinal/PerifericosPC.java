@@ -13,6 +13,7 @@ public class PerifericosPC extends Producto{
     private String fabricante;
     private int numero_de_puertos;
     private String color;
+    private Garantia garantia;//composicion
     
     public PerifericosPC(){
         super(4,"Teclado","Mecanico",50000,10);
@@ -20,6 +21,7 @@ public class PerifericosPC extends Producto{
         this.fabricante="Razer";
         this.numero_de_puertos=1;
         this.color="negro";
+        this.garantia= new Garantia("2 Años");//composicion
     }
 
     public PerifericosPC(PerifericosPC segundo){
@@ -28,6 +30,15 @@ public class PerifericosPC extends Producto{
         this.fabricante="Logitech";
         this.numero_de_puertos=2;
         this.color="blanco";
+        this.garantia=new Garantia("3 meses");//composicion
+    }
+
+    public Garantia getGarantia() {
+        return garantia;
+    }
+
+    public void setGarantia(Garantia garantia) {
+        this.garantia = garantia;
     }
     
     public String getTipo_conexion() {
