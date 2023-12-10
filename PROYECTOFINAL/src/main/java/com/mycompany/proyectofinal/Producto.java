@@ -15,7 +15,7 @@ public abstract class Producto implements Calculo {
     protected double precio;
     protected int stock;
     protected List<Pedido> pedidos;
-    private List<Producto> productos;
+   
 
     public Producto(int idproducto, String nombre, String descripcion, double precio, int stock) {
         this.idproducto = idproducto;
@@ -52,14 +52,6 @@ public abstract class Producto implements Calculo {
         } else {
             System.out.println("No hay productos para calcular el promedio.");
         }
-    }
-
-    private int getTotalProductos() {
-        int totalProductos = 0;
-        for (Pedido pedido : pedidos) {
-            totalProductos += pedido.getProductos().size();
-        }
-        return totalProductos;
     }
     
     public List<Pedido> getPedidos() {

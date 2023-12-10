@@ -43,6 +43,10 @@ public class PROYECTOFINAL {
         cliente1.setDireccion(direccion);
         System.out.println("\nSus datos son: " + cliente1.toString());
 
+        //CREAMOS EL PEDIDO//
+        
+        Pedido pedido3 = new Pedido(30, "30/5/2005", "Disponible");
+
         while (!menu) {
             System.out.println("\nQue productos desea comprar?: ");
             System.out.println("1. " + periferico1.toString() + " Garantia: " + periferico1.getGarantia().getTiempo());
@@ -54,17 +58,17 @@ public class PROYECTOFINAL {
             System.out.println("7. " + aplicacion2.toString());
             System.out.println("8. " + aplicacion3.toString());
             System.out.println("9. Calcular Promedio de compras");
-            System.out.println("10. Salir");
+            System.out.println("10. Calcular Precio total");
+            System.out.println("11. Salir");
             opcion = entrada.nextInt();
 
-            //CREAMOS EL PEDIDO//
-            Pedido pedido3 = new Pedido(30, "30/5/2005", "Disponible");
+            
 
             switch (opcion) {
                 case 1:
                     pedido3.asignarCliente(cliente1);
                     pedido3.agregarnuevoproducto(periferico1);
-                    //periferico1.agregarnuevopedido(pedido3);
+                    periferico1.agregarnuevopedido(pedido3);
                     break;
                 case 2:
                     pedido3.asignarCliente(cliente1);
@@ -102,16 +106,19 @@ public class PROYECTOFINAL {
                     aplicacion3.agregarnuevopedido(pedido3);
                     break;
                 case 9:
-                    System.out.println("Los productos son: "+pedido3.getProductos());
-                    pedido3.calcularProductos();
-                    aplicacion1.calcularProductos();
+                    pedido3.calcularPromedio();
                     break;
                 case 10:
+                    pedido3.calcularProductos();  
+                    break;
+                case 11:
                     menu = true;
                     break;
             }
             
         }
+        
+        System.out.println("Sus productos comprados fueron: "+pedido3.mostrarProductos());
 
         //cliente1.setClienteReferido(cliente2);//autorelacion
         //cliente2.setClienteReferido(cliente1);

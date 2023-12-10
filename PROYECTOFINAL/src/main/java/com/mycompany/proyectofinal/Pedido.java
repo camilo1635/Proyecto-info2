@@ -1,4 +1,3 @@
-
 package com.mycompany.proyectofinal;
 
 import java.util.ArrayList;
@@ -8,42 +7,60 @@ import java.util.List;
  *
  * @author jc777
  */
-public class Pedido implements Calculo{
+public class Pedido implements Calculo {
+
     private int idPedido;
     private String fechaCompra;
     private String estado;
-    private List<Producto> productos; 
+    private List<Producto> productos;
     private cliente cliente;
-    
 
-    public Pedido(int idPedido, String fechaCompra, String estado){
-        this.idPedido=idPedido;
-        this.fechaCompra=fechaCompra;
-        this.estado=estado;
-        this.productos=new ArrayList<>();
+    public Pedido(int idPedido, String fechaCompra, String estado) {
+        this.idPedido = idPedido;
+        this.fechaCompra = fechaCompra;
+        this.estado = estado;
+        this.productos = new ArrayList<>();
+        
     }
-    
-    public void agregarnuevoproducto(Producto producto){
+
+    public void agregarnuevoproducto(Producto producto) {
         productos.add(producto);
         producto.agregarnuevopedido(this);//linea de asociacion
     }
-    
-    public void asignarCliente(cliente cliente){
-        this.cliente=cliente;
+
+    public String mostrarProductos() {
+        String mostrar = "";
+        for (int i = 0; i < productos.size(); i++) {
+            mostrar += productos.get(i).toString();
+        }
+        return mostrar;
     }
-    
+
+    public void asignarCliente(cliente cliente) {
+        this.cliente = cliente;
+    }
 
     @Override
     public void calcularProductos() {//calcular total
-            double total=0;
-        
-            for(Producto producto: productos){
-                total += producto.getPrecio();
-            }
-            System.out.println("El total de los precios es: "+total);
-    }
+        double sumaPrecios = 0;
 
+        for (Producto producto : productos) {
+            sumaPrecios += producto.getPrecio();
+            producto.calcularProductos();
+        }
+
+        if (!productos.isEmpty()) {
+            System.out.println("La suma de precios de los productos es: " + sumaPrecios);
+        } else {
+            System.out.println("No hay productos para calcular la suma de precios.");
+        }
+    }
     
+    public void calcularPromedio(){//llamar a la funcion de la clase Producto
+        for (Producto producto : productos) {
+            producto.calcularProductos();
+        }
+    }
     
     public int getIdPedido() {
         return idPedido;
@@ -85,6 +102,5 @@ public class Pedido implements Calculo{
     public String toString() {
         return "Pedido{" + "idPedido=" + idPedido + ", fechaCompra=" + fechaCompra + ", estado=" + estado + ", productos=" + productos + '}';
     }
-    
-    
+
 }
