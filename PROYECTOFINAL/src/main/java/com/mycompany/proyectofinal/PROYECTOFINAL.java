@@ -11,7 +11,7 @@ public class PROYECTOFINAL {
     public static void main(String[] args) {
 
         Scanner entrada = new Scanner(System.in);
-        int opcion, num = 0, num1;
+        int opcion, num, num1, num2, num3;
         boolean menu = false;
         String nombre, direccion;
 
@@ -47,7 +47,7 @@ public class PROYECTOFINAL {
         Pedido pedido3 = new Pedido(30, "30/5/2005", "Disponible");
         
         //CREAMOS LA FACTURA//
-        Factura factura1 = new Factura("Electronica","Efectivo",pedido3);
+        Factura factura1 = new Factura("Electronica","Efectivo",pedido3);//agregacion
         
         
         while (!menu) {
@@ -126,9 +126,36 @@ public class PROYECTOFINAL {
             }
 
         }
-
-        System.out.println("Sus productos comprados fueron: " + pedido3.mostrarProductos());
-        pedido3.descuento();
+        
+        System.out.println("\nElija metodo de pago: \n1. Efectivo \n2. Tarjeta de credito \n3. Nequi");
+        num2 = entrada.nextInt();
+        switch(num2){
+            case 1:
+                factura1.setTipodePago("Efectivo");
+                break;
+            case 2:
+                factura1.setTipodePago("Tarjeta de credito");
+                break;
+            case 3:
+                factura1.setTipodePago("Nequi");
+                break;
+        }
+        
+        System.out.println("\nElija de que tipo quiere la factura: \n1. Electronica \n2. Fisica \n3. No la deseo");
+        num3 = entrada.nextInt();
+        switch(num3){
+            case 1:
+                factura1.setTipodefactura("Electronica");
+                break;
+            case 2:
+                factura1.setTipodefactura("Fisica");
+                break;
+            case 3:
+                factura1.setTipodefactura("No la adquirio");
+                break;
+        }
+        
+        
         System.out.println("\nDesea recomenda EAZY SHOP a otro cliente? ");
         System.out.println("1. Si");
         System.out.println("2. No");
@@ -147,13 +174,17 @@ public class PROYECTOFINAL {
                     System.out.println("\nEl cliente recomedado fue: " + cliente1.getClienteReferido().getNombre());
                     break;
             }
-            System.out.println("Su factura es la siguiente: "+factura1.toString()+"\nDatos de la compra: "+factura1.getPedido().toString());
+            System.out.println("\nSu factura es la siguiente: "+factura1.toString()+"\nDatos de la compra: "+factura1.getPedido().toString());
+            pedido3.descuento();
+            pedido3.calcularPromedio();
+            pedido3.calcularProductos();
             System.out.println("\n-------Gracias por comprar en EAZY SHOP!!---------");
 
-        } else {
-            System.out.println("Su factura es la siguiente: "+factura1.toString()+"\nDatos de la compra: "+factura1.getPedido().toString());
-            System.out.println("\n-------Gracias por comprar en EAZY SHOP!!---------");
         }
-
+        System.out.println("Su factura es la siguiente: "+factura1.toString()+"\nDatos de la compra: "+factura1.getPedido().toString());
+        pedido3.descuento();
+        pedido3.calcularPromedio();
+        pedido3.calcularProductos();
+        System.out.println("\n-------Gracias por comprar en EAZY SHOP!!---------");
     }
 }
