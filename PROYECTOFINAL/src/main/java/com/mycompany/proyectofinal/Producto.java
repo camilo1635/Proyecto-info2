@@ -25,12 +25,9 @@ public abstract class Producto implements Calculo {
         this.pedidos = new ArrayList<>();
     }
 
-    public void ajustarPrecio() {
-
-    }
-
     public void agregarnuevopedido(Pedido pedido) {
         pedidos.add(pedido);
+
     }
 
     @Override
@@ -43,12 +40,6 @@ public abstract class Producto implements Calculo {
                 sumaPrecios += producto.getPrecio();
                 cantidadTotalProductos++;
             }
-        }
-        if (cantidadTotalProductos > 0) {
-            double promedio = sumaPrecios / cantidadTotalProductos;
-            System.out.println("El promedio de precios de los productos es: " + promedio);
-        } else {
-            System.out.println("No hay productos para calcular el promedio.");
         }
     }
 

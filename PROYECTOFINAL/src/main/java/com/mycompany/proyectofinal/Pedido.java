@@ -40,7 +40,7 @@ public class Pedido implements Calculo {
     }
 
     @Override
-    public void calcularProductos() {//calcular total
+    public void calcularProductos() {//calcular precio total
         double sumaPrecios = 0;
 
         for (Producto producto : productos) {
@@ -73,8 +73,19 @@ public class Pedido implements Calculo {
     }
 
     public void calcularPromedio() {//llamar a la funcion de la clase Producto
+        double sumaPrecios = 0;
+        int cantidadTotalProductos = 0;
+
         for (Producto producto : productos) {
-            producto.calcularProductos();
+            sumaPrecios += producto.getPrecio();
+            cantidadTotalProductos++;
+        }
+
+        if (cantidadTotalProductos > 0) {
+            double promedio = sumaPrecios / cantidadTotalProductos;
+            System.out.println("El promedio de precios de los productos es: " + promedio);
+        } else {
+            System.out.println("No hay productos para calcular el promedio.");
         }
     }
 
